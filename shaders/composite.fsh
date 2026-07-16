@@ -15,7 +15,7 @@ uniform mat4 gbufferModelViewInverse;
 const vec3 blocklightColor = vec3(1.0, 0.5, 0.08);
 const vec3 skylightColor = vec3(0.05, 0.15, 0.3);
 const vec3 sunlightColor = vec3(1.0);
-const vec3 ambientColor = vec3(1.2);
+const vec3 ambientColor = vec3(1.0);
 
 in vec2 texcoord;
 
@@ -41,6 +41,8 @@ void main() {
   vec3 skylight = lightmap.y * skylightColor;
   vec3 ambient = ambientColor;
   vec3 sunlight = sunlightColor * clamp(dot(worldLightVector, normal), 1.2, 0.0) * lightmap.y;
+  vec3 tint = vec3(0.7, 0.1, 0.3); // The tint :3
 
-  color.rgb *= blocklight + skylight + ambient + sunlight;
+
+  color.rgb *= blocklight + skylight + ambient + sunlight + tint;
 }

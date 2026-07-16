@@ -15,4 +15,6 @@ void main() {
 	if (color.a < alphaTestRef) {
 		discard;
 	}
+
+	vec3 tint = vec3(1.0, 0.1, 1.0);
 }
