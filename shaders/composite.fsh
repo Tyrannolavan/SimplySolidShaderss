@@ -30,10 +30,12 @@ void main() {
   vec3 worldLightVector = mat3(gbufferModelViewInverse) * lightVector;
 
   color = texture(colortex0, texcoord);
-   color.rgb = pow(color.rgb, vec3(2.2));
+  color.rgb = pow(color.rgb, vec3(2.2));
 
-    float depth = texture(depthtex0, texcoord).r;
+  float depth = texture(depthtex0, texcoord).r;
     if (depth == 1.0) {
+
+
         return; // let's skip whats beneath us - the lighting apply logic!
     }
 
@@ -41,8 +43,9 @@ void main() {
   vec3 skylight = lightmap.y * skylightColor;
   vec3 ambient = ambientColor;
   vec3 sunlight = sunlightColor * clamp(dot(worldLightVector, normal), 1.2, 0.0) * lightmap.y;
-  vec3 tint = vec3(0.7, 0.1, 0.3); // The tint :3
+  vec3 tint = vec3(0.45, 0.2, 0.3); // The tint :3
 
 
   color.rgb *= blocklight + skylight + ambient + sunlight + tint;
+  color.a = 1.0;
 }
