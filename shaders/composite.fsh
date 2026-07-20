@@ -36,12 +36,12 @@ void main() {
 
       // Nether Sky
       if (dimension == -1) {
-        color.rgb *= 5.0;
+        color.rgb *= 2.0;
       } 
       
       // End Sky
       else if (dimension == 2) {
-        color.rgb *= 5.0;
+        color.rgb *= 2.0;
       }
 
         color.rgb = pow(color.rgb, vec3 (1.0/2.2));
