@@ -53,7 +53,7 @@ void main() {
   vec3 skylight = lightmap.y * skylightColor;
   vec3 ambient = ambientColor;
   vec3 sunlight = sunlightColor * clamp(dot(worldLightVector, normal), 1.2, 0.0) * lightmap.y;
-  vec3 tint = vec3(0.45, 0.2, 0.3); // The tint :3
+  vec3 tint = vec3(0.225, 0.1, 0.15); // The tint :3
 
   // Final Color Out :D
   color.rgb *= blocklight + skylight + ambient + sunlight + tint;
