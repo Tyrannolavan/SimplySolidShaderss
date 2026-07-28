@@ -3,27 +3,26 @@
 //  uniform sampler2D lightmap;
  uniform sampler2D gtexture;
 
- uniform float alphaTestRef = 1.0;
+ uniform float alphaTestRef = 0.1;
 
  in vec2 lmcoord;
  in vec2 texcoord;
  in vec4 glcolor;
-//  in vec3 normal;
 
  /* RENDERTARGETS: 0,1 */
-//  /* RENDERTARGETS: 0,1,2 */
  layout(location = 0) out vec4 color;
  layout(location = 1) out vec4 lightLevelData;
-//  layout(location = 2) out vec4 encodedNormal;
+
 
 void main() {
-  color = texture(gtexture, texcoord) * glcolor;
-//   color *= texture(lightmap, lmcoord);
 
-   lightLevelData = vec4(lmcoord, 0.0, 1.0); // this will write to buffer #1, as we defined above!
-//    encodedNormal = vec4(normal * 0.5 + 0.5, 1.0); // [-1.0, 1.0] to [0.0, 1.0]
+  vec4 tex = texture(gtexture, texcoord) * glcolor;
 
-    if (color.a < alphaTestRef) {
+    if (tex.a < alphaTestRef) {
         discard;
     }
- }
+
+  color = tex;
+  
+  lightLevelData = vec4(lmcoord, 0.0, 1.0);
+}
