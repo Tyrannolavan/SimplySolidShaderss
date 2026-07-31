@@ -3,6 +3,13 @@
 uniform sampler2D colortex0;
 uniform sampler2D colortex1;
 uniform sampler2D colortex2;
+
+/*
+const int colortex0Format = RGBA16F;
+const int colortex1Format = RGBA16F;
+const int colortex2Format = RGBA16F;
+*/
+
 uniform sampler2D depthtex0;
 uniform int dimension;
 uniform vec3 shadowLightPosition;
@@ -28,6 +35,7 @@ void main() {
   vec3 worldLightVector = mat3(gbufferModelViewInverse) * lightVector;
 
   color = texture(colortex0, texcoord);
+  color.rgb = clamp(color.rgb, 0.0, 1.0);
   color.rgb = pow(color.rgb, vec3(2.2));
 
   // Sky Color and Brightness yee

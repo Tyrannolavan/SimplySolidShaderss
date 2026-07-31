@@ -2,7 +2,7 @@
 
  uniform sampler2D gtexture;
 
- uniform float alphaTestRef = 1.0;
+ uniform float alphaTestRef = 0.1;
 
  in vec2 lmcoord;
  in vec2 texcoord;
@@ -18,7 +18,11 @@ void main() {
 
    lightLevelData = vec4(lmcoord, 0.0, 1.0); // this will write to buffer #1, as we defined above!
 
-    if (color.a < alphaTestRef) {
+    if (tex.a < alphaTestRef) {
         discard;
     }
- }
+
+  color = tex;
+  
+  lightLevelData = vec4(lmcoord, 0.0, 1.0);
+}
