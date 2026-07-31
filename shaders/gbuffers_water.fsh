@@ -34,5 +34,5 @@ void main() {
 
 	vec3 fakeSkyColor = mix(vec3(0.4, 0.6, 0.9), vec3(0.7, 0.85, 1.0), max(worldReflect.y, 0.0));
 
-	color.rgb = mix(color.rgb, fakeSkyColor, fresnel * 0.25);
+	color.rgb = mix(color.rgb, fakeSkyColor, fresnel * 0.3);
 }
