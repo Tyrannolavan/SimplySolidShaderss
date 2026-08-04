@@ -2,7 +2,7 @@
 
  uniform sampler2D gtexture;
 
- uniform float alphaTestRef = 1.0;
+ uniform float alphaTestRef = 0.1;
 
  in vec2 lmcoord;
  in vec2 texcoord;
@@ -21,4 +21,8 @@ void main() {
     if (color.a < alphaTestRef) {
         discard;
     }
- }
+
+  color = color;
+  
+  lightLevelData = vec4(lmcoord, 0.0, 1.0);
+}

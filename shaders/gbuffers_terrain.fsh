@@ -18,11 +18,11 @@ void main() {
 
    lightLevelData = vec4(lmcoord, 0.0, 1.0); // this will write to buffer #1, as we defined above!
 
-    if (tex.a < alphaTestRef) {
+    if (color.a < alphaTestRef) {
         discard;
     }
 
-  color = tex;
+  color = color;
   
   lightLevelData = vec4(lmcoord, 0.0, 1.0);
 }
