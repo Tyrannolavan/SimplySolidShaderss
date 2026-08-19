@@ -79,5 +79,7 @@ void main() {
 
   // Final Color Out :D
   color.rgb *= blocklight + skylight + ambient + sunlight + tint;
+
+  
   color.a = 1.0;
 }
