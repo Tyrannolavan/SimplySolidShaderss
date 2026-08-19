@@ -1,5 +1,19 @@
 #version 330 compatibility
 
+#define MOTION_BLUR
+
+#ifdef MOTION_BLUR
+// const float MOTION_BLUR_STRENGTH = 1.0; // [0.0 0.5 1.0 1.5 2.0]
+// const int MOTION_BLUR_SAMPLES = 8; // [4 8 12 16 24]
+
+uniform mat4 gbufferProjectionInverse;
+uniform mat4 gbufferPreviousProjection;
+uniform mat4 gbufferPreviousModelView;
+uniform vec3 cameraPosition;
+uniform vec3 previousCameraPosition;
+#endif
+
+
 uniform sampler2D colortex0;
 uniform sampler2D colortex1;
 uniform sampler2D colortex2;
